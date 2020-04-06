@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+OMIM <- read.csv("../../../Downloads/ICD10-manual mapping_updated - Updated_latest_ICD10-OMIM_mapping.csv")
+head(OMIM)
+```
+
+```{r}
+SORTED <- OMIM[order(OMIM$ICD10),]
+write.csv(SORTED,"../../../Desktop/ICD10_sorted.csv")
+```
+
+```{r}
+order(OMIM$ICD10)
+```
+
