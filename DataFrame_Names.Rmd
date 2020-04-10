@@ -1,0 +1,44 @@
+---
+title: "DataFrame"
+author: "AI Casas"
+date: "4/8/2020"
+output: pdf_document
+---
+
+Crear un data frame
+
+```{r}
+x <- data.frame(foo = 1:4, bar = c(T,F,T,F))
+x
+```
+
+Name factors
+
+```{r}
+x <- 1:3
+x
+names(x) <- c("bar", "foo", "loo")
+x
+```
+
+Name list
+
+```{r}
+x <- list(a = 1, b = 2, c = 3)
+x
+```
+
+Name matrix
+
+```{r}
+m <- matrix(1:6, ncol = 3, nrow = 2)
+m
+```
+
+```{r}
+dimnames(m) <- list(c("a", "b"), c("pr", "pz", "px"))
+m
+```
+
+Primero introduce los nombres de las filas y luego de las columnas 
+
