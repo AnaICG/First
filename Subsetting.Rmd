@@ -1,0 +1,82 @@
+---
+title: "Subtract_object"
+author: "AI Casas"
+date: "4/10/2020"
+output: pdf_document
+---
+
+Subsetting objects
+
+```{r}
+x <- c("b", "a", "z", "e")
+x[1:4]
+x[x>1]
+x[x>"a"]
+u <- x>"a"
+x[u]
+x>"a"
+```
+
+subsetting lists
+
+First, run the list
+
+```{r}
+x <- list(foo = 1:4, bar = 3)
+x
+```
+Extract the first element of the list
+```{r}
+x[1]
+x[[1]]
+```
+
+```{r}
+x[2]
+x["bar"]
+x[["bar"]]
+x$bar
+x$foo
+```
+
+Subset several elements from a list
+```{r}
+m <- list(foo = 1:4, bar = 3, baz = "a")
+m
+```
+
+```{r}
+m[c(1,3)]
+```
+```{r}
+m$foo
+```
+
+Con el dolar puedes sacar directamente un elemento de una lista con el nombre
+
+Sacar elementos dentro de una lista que tenga otra lista incluida
+
+```{r}
+w <- list(list(1,3,89), b = "r")
+w[[c(1,2)]]
+w[2]
+```
+
+Matrix
+
+```{r}
+q <- matrix(1:6, 2, 3)
+q
+```
+
+```{r}
+q[2,3]
+q[1,]
+```
+
+```{r}
+w <- list(aaverter = 1:5)
+w
+w$a
+```
+
