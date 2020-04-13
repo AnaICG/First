@@ -1,0 +1,140 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/10/2020"
+output: pdf_document
+---
+
+```{r}
+x<-4
+x
+class(x)
+```
+
+```{r}
+w <- c(4,TRUE)
+w
+class(w)
+```
+
+```{r}
+ x <- list(2, "a", "b", TRUE)
+x[[1]]
+x
+```
+
+```{r}
+x <- 1:4
+y <- 2
+```
+
+```{r}
+list(2)
+
+```
+
+```{r}
+w <- 1:4
+y <- 6:9
+w
+y
+w+y
+w>2
+```
+
+```{r}
+x <- 1:4 
+y <- 2
+x + y
+```
+```{r}
+x <- c(17, 14, 4, 5, 13, 12, 10)
+x[x>=11] <- 4
+x
+```
+
+```{r}
+aq <- read.csv("hw1_data.csv")
+aq
+```
+
+```{r}
+aq[1:2,]
+```
+
+```{r}
+aq[152:153, ]
+```
+
+```{r}
+aq[47,]
+```
+
+```{r}
+aq[1:153,1]
+oz <- aq[1:153,1]
+```
+
+```{r}
+n <- complete.cases(oz)
+n
+media <- oz[n]
+media
+```
+
+```{r}
+media
+mean(media)
+```
+
+```{r}
+aq
+```
+
+```{r}
+q18 <- aq[,c("Ozone", "Solar.R", "Temp")]
+q18
+```
+
+```{r}
+aq
+```
+
+```{r}
+aq18 <- aq[aq$Ozone>31&aq$Temp>90, ]
+aq18
+media <- aq18[,"Solar.R"]
+media
+
+```
+
+```{r}
+d <- complete.cases(media)
+d
+final <- media[d]
+mean(final)
+```
+
+```{r}
+aq
+```
+
+```{r}
+aq19 <- aq[aq$Month==6,]
+aq19
+```
+
+```{r}
+media2 <- aq19[,"Temp"]
+mean(media2)
+```
+
+```{r}
+aq19.2 <- aq[aq$Month==5,]
+aq19.2
+```
+
+```{r}
+max(aq19.2$Ozone,na.rm = TRUE)
+```
+
