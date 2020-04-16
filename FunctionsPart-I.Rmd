@@ -1,0 +1,68 @@
+---
+title: "Functions"
+author: "AI Casas"
+date: "4/16/2020"
+output: pdf_document
+---
+
+Functions: Part I
+
+Hacer una funcion que sume dos numeros cualquiera
+
+```{r}
+add2 <- function(x,y){
+  x + y
+}
+add2
+add2(3,4)
+```
+
+Hacer una funcion que de imprima valores de una serie numerica mayores a un valor determinado "n"
+```{r}
+p <- 1:20
+above <- function (p,n){
+  use <- p > n
+  p[use]
+}
+above(p,8)
+```
+
+Como hacer la media de las columnas de una tabla
+```{r}
+oz <- read.csv("hw1_data.csv")
+oz
+```
+
+```{r}
+colmean <- function(y, removeNA = TRUE){
+  nc <- ncol(y)
+  means <- numeric(nc)
+  for(i in 1:nc){
+    means[i] <- mean(y[,i], na.rm = TRUE)
+  }
+  means
+}
+colmean(oz)
+```
+Hay una funcion en R que ya te hace eso de por si y no necesitas escribir el codigo 
+
+
+Una funcion que eleve al cuadrado cualquier numero que le introduzcas
+```{r}
+f <- function(a){
+  a^2
+}
+f(3)
+```
+
+```{r}
+?paste()
+```
+
+```{r}
+eq <- function(x,y){
+  x^2 + y/x
+}
+eq(2,3)
+```
+
