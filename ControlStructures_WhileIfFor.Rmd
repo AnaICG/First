@@ -1,0 +1,73 @@
+---
+title: "Swirl"
+author: "AI Casas"
+date: "4/13/2020"
+output: pdf_document
+---
+
+Control Structure: If/else
+```{r}
+x <- 5
+y <- if(x>3){
+  10
+} else {
+  0
+}
+y
+
+```
+
+Not really too necesary in R, although worthy to know
+
+Control Structure: Loops
+```{r}
+for (i in 1:10){
+  print(i)
+}
+```
+
+```{r}
+w <- c("a", "b", "c", "d")
+for(i in seq_along(w)) {
+  print(w[i])
+}
+```
+```{r}
+w <- c("a", "b", "c", "d")
+for(i in 1:4) {
+  print(w[i])
+}
+```
+
+matrix and loops
+
+```{r}
+q <- matrix(1:6, 2, 3)
+q
+for(i in seq_len(ncol(q))){
+  print(q[,i])
+}
+```
+
+While loops 
+
+```{r}
+count <- 0
+while (count < 10){
+  print(count)
+  count <- count + 1
+}
+```
+
+Next 
+
+```{r}
+for(i in 1:100) {
+  if (i <= 20) {
+   next
+  }
+  
+  print(i)
+}
+```
+
