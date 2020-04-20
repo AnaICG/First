@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/17/2020"
+output: pdf_document
+---
+
+Dates and times
+
+Sys.time() gives you exactly the date and time. Then, you can save it in as.POSIXlt to be appear as a list
+```{r}
+x <- Sys.time()
+x
+p <- as.POSIXlt(x)
+unclass(p)
+p$year
+```
+
+```{r}
+x <- Sys.time()
+x
+p <- as.POSIXct(x)
+unclass(p)
+```
+All this long list of numbers is the number of seconds from 1st January 1970
+
+How to move from character to integer in time/dates
+```{r}
+datestring <- c("January 10, 2012 10:40")
+x <- strptime(datestring, "%B %d, %Y %H:%M")
+x
+```
