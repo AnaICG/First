@@ -1,0 +1,64 @@
+---
+title: "Assigment1_Part2"
+author: "AI Casas"
+date: "4/20/2020"
+output: pdf_document
+---
+
+```{r}
+complete <- function(directory, id = 1:332){
+  docs <- dir(directory)
+  docs <- docs[id]
+  allnobs <- c()
+  
+  for (doc in docs) {
+    df <- read.csv(file.path(directory, doc))
+    p2 <- complete.cases(df)
+    p3 <- p2[p2]
+    ln <- length(p3)
+    allnobs <- c(allnobs, ln)
+    
+  }
+df_com <- data.frame(id, allnobs)
+return(df_com)
+}
+complete("specdata", 30:25)
+
+```
+
+
+
+
+```{r}
+getwd()
+setwd("/Users/ppm/Desktop/R Course/First/")
+getwd()
+
+```
+
+```{r}
+rafaspenis <- function(directory, id=1:332){
+  docs <- dir(directory)
+  docs <- docs[id]
+  allnobs <- sapply(docs,function(doc){df <- read.csv(file.path(directory,doc));
+                                      return(sum(complete.cases(df)))
+  })
+  df_com <- data.frame(id, allnobs)
+  return(df_com)
+}
+
+rafaspenis("specdata/",id=30:25)
+```
+```
+
+
+```{r}
+setwd("/Users/ppm/Desktop/R Course/First/specdata")
+getwd()
+p1 <- read.csv("001.csv")
+p2 <- complete.cases(p1)
+p3 <- p2[p2]
+length(p3)
+sum(p3)
+```
+

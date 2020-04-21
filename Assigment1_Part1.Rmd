@@ -1,0 +1,49 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/17/2020"
+output: pdf_document
+---
+
+
+
+```{r}
+n1 = rnorm(20,5,sd=4)
+n2 = rnorm(50,5,sd=4)
+```
+
+```{r}
+n1
+n2
+
+m1 = mean(c(mean(n1),mean(n2)))
+m2 = mean(c(n1,n2))
+
+```
+
+```{r}
+m1
+```
+
+```{r}
+polutantmean <- function(directory, pollutant, id = 1:332){
+  docs <- dir(directory)
+  docs <- docs[id]
+  allpol <- c()
+  for (doc in docs) {
+    df <- read.csv(file.path(directory, doc))
+    pol <- df[ , pollutant]
+    fr <- pol[!is.na(pol)]
+    allpol <- c(fr, allpol)
+  }
+mean(allpol)
+}
+
+polutantmean("specdata/", "nitrate", 70:72)
+```
+
+```{r}
+setwd("/Users/ppm/Desktop/R Course/First/")
+```
+
+

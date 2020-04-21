@@ -1,0 +1,91 @@
+---
+title: "Assigment1_Part3"
+author: "AI Casas"
+date: "4/20/2020"
+output: pdf_document
+---
+
+```{r}
+getwd()
+setwd("/Users/ppm/Desktop/R Course/First/specdata")
+getwd()
+
+```
+
+```{r}
+p1 <- read.csv("001.csv")
+
+sn1 <- p1[, "sulfate"]
+sn2 <- p1[, "nitrate"]
+cor(sn1, sn2, use = "complete.obs")
+
+
+```
+
+```{r}
+sn1 <- p1[complete.cases(p1), c("sulfate", "nitrate")]
+cor(sn1$sulfate, sn1$nitrate)
+
+
+```
+
+```{r}
+complete <- function(directory, threshold, id = 1:332){
+  docs <- dir(directory)
+  docs <- docs[id] 
+  allnobs <- c()
+
+  
+  for (doc in docs) {
+    df <- read.csv(file.path(directory, doc))
+    p2 <- complete.cases(df)
+    p3 <- p2[p2]
+    ln <- length(p3)
+    allnobs <- c(allnobs, ln)
+    
+  }
+
+df_com1 <- data.frame(id, allnobs)
+df_com2 <- df_com1[allnobs > threshold, ]
+ids <- df_com2[, "id"]
+print(ids)
+
+docs2 <- dir(directory)
+new_docs <- docs2[ids]
+cor_f <- c()
+  
+  for(doc in new_docs){
+    new_df <- read.csv(file.path(directory, doc))
+    sn1 <- new_df[complete.cases(new_df), c("sulfate", "nitrate")]
+    cor_acc <- cor(sn1$sulfate, sn1$nitrate)
+    cor_f <- c(cor_f, cor_acc)
+  
+  }
+return(cor_f)
+}
+complete("specdata", 600)
+
+```
+
+
+```{r}
+  for(doc in new_docs){
+  new_df <- read.csv(file.path(directory, doc))
+  sn1 <- new_df[complete.cases(p1), c("sulfate", "nitrate")]
+  cor_acc <- cor(sn1$sulfate, sn1$nitrate)
+  cor_f <- c(cor_f, cor_acc)
+```
+
+
+```{r}
+    sn <- read.csv("001.csv")
+    sn1 <- sn[complete.cases(sn), c("sulfate", "nitrate")]
+    cor_acc <- cor(sn1$sulfate, sn1$nitrate)
+    cor_acc
+   
+```
+
+```{r}
+setwd("/Users/ppm/Desktop/R Course/First")
+```
+
