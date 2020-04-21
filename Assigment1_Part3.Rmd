@@ -30,7 +30,7 @@ cor(sn1$sulfate, sn1$nitrate)
 ```
 
 ```{r}
-complete <- function(directory, threshold, id = 1:332){
+corr <- function(directory, threshold, id = 1:332){
   docs <- dir(directory)
   docs <- docs[id] 
   allnobs <- c()
@@ -63,7 +63,8 @@ cor_f <- c()
   }
 return(cor_f)
 }
-complete("specdata", 600)
+cr <- corr("specdata", 150)
+head(cr)
 
 ```
 
@@ -87,5 +88,9 @@ complete("specdata", 600)
 
 ```{r}
 setwd("/Users/ppm/Desktop/R Course/First")
+```
+
+```{r}
+?head
 ```
 
