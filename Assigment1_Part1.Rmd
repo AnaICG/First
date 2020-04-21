@@ -39,7 +39,7 @@ polutantmean <- function(directory, pollutant, id = 1:332){
 mean(allpol)
 }
 
-polutantmean("specdata", "nitrate", 23)
+polutantmean("specdata", "nitrate")
 ```
 
 ```{r}

@@ -29,6 +29,7 @@ cor(sn1$sulfate, sn1$nitrate)
 
 ```
 
+FUNCION Assigment 1_Part3
 ```{r}
 corr <- function(directory, threshold, id = 1:332){
   docs <- dir(directory)
@@ -67,8 +68,48 @@ cr <- corr("specdata", 150)
 head(cr)
 
 ```
+Week2_Quiz
+```{r}
+cr <- corr("specdata", 0)                
+cr <- sort(cr)   
+RNGversion("3.5.1")
+set.seed(868)                
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
+```
 
+Week2_Quiz
+```{r}
+cr <- corr("specdata", 129)                
+cr <- sort(cr)                
+n <- length(cr)    
+RNGversion("3.5.1")
+set.seed(197)                
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+```
 
+Week2_Quiz
+```{r}
+cr <- corr("specdata", 129)                
+cr <- sort(cr)                
+n <- length(cr)    
+RNGversion("3.5.1")
+set.seed(197)                
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+```
+
+Week2_Quiz
+```{r}
+cr <- corr("specdata", 2000)                
+n <- length(cr)                
+cr <- corr("specdata", 1000)                
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
+```
+
+Pruebas de ciertas partes de la funcion
 ```{r}
   for(doc in new_docs){
   new_df <- read.csv(file.path(directory, doc))

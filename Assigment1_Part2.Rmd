@@ -22,10 +22,18 @@ complete <- function(directory, id = 1:332){
 df_com <- data.frame(id, allnobs)
 return(df_com)
 }
-complete("specdata")
+cc <- complete("specdata", 54)
+print(cc$allnobs)
 
 ```
 
+```{r}
+RNGversion("3.5.1")  
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "allnobs"])
+```
 
 
 
