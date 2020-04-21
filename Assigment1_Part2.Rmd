@@ -22,7 +22,7 @@ complete <- function(directory, id = 1:332){
 df_com <- data.frame(id, allnobs)
 return(df_com)
 }
-complete("specdata", 30:25)
+complete("specdata")
 
 ```
 
