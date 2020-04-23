@@ -1,0 +1,99 @@
+---
+title: "Loop functions"
+author: "AI Casas"
+date: "4/22/2020"
+output: pdf_document
+---
+
+Loop functions:lappy
+
+```{r}
+x <- list(a = 1:5, b = rnorm(10))
+x
+lapply(x, mean)
+```
+
+```{r}
+?runif()
+```
+
+```{r}
+g <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2))
+g
+lapply(g, function(elt) elt[,1])
+```
+
+Loop Functions: apply
+
+```{r}
+r <- matrix(rnorm(200), 20, 10)
+apply(r, 1, quantile, probs = c(0.25, 0.75))
+```
+
+Loop Functions: mapply
+
+```{r}
+mapply(rep, 1:4, 4:1)
+```
+La mapply no la entiendo
+
+
+```{r}
+e <- rep(1:4)
+e
+
+```
+
+
+Loop function: tapply 
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+x
+f <- gl(3, 10)
+f
+```
+
+```{r}
+tapply(x, f, mean)
+?gl
+gl(3, 10)
+```
+
+Impartante tener en cuenta que a la tapply le tienens que decir como formar los subsets del vector principal que le estas dando. Es decir, si el vector x tiene 2 "trozos" o niveles, le tienes que incluir un INDEX (en este caso "f") de la misma longitud que le diga que hay 3 grupos de 10 cada uno (en este caso)
+
+Split: It is not a loop function
+
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+x
+f <- gl(3, 10)
+f
+split(x, f)
+```
+
+You can use the split together with the lapplay or sapplay
+```{r}
+lapply(split(x,f), mean)
+```
+
+However you can do exactly the same thing by using tapply
+```{r}
+tapply(x, f, mean)
+```
+
+Same results, then
+
+How to use the split function in data frames
+```{r}
+getwd()
+setwd("/Users/ppm/Desktop/R Course/First/")
+getwd()
+read.csv("hw1_data.csv")
+```
+
+```{r}
+df <- read.csv("hw1_data.csv")
+df2 <- split(df, df$Month)
+lapply(df2, function(df2) colMeans(df2[c("Solar.R", "Wind")]))
+```
+
