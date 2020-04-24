@@ -91,9 +91,15 @@ getwd()
 read.csv("hw1_data.csv")
 ```
 
+You can split the df based on months and then apply a function to each section
 ```{r}
 df <- read.csv("hw1_data.csv")
 df2 <- split(df, df$Month)
 lapply(df2, function(df2) colMeans(df2[c("Solar.R", "Wind")]))
+```
+
+Instead of the lapply you can implement sapply if you dont want a list but a matrix where the "5-9" numbers represent the month
+```{r}
+sapply(df2, function(df2) colMeans(df2[c("Solar.R", "Wind")], na.rm = TRUE))
 ```
 
