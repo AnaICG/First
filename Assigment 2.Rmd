@@ -13,14 +13,9 @@ m<-NULL
 evn <- environment() 
 y<-NULL 
 
-m<-NULL  
-evn <- environment()
-y<-NULL 
-
 setmatrix<-function(y){ 
 	x<<-y 
 	m<<-NULL 
-	
 	}
   
 getmatrix<-function() x  
