@@ -1,0 +1,87 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/24/2020"
+output: pdf_document
+---
+
+```{r}
+library(datasets)
+data(iris)
+?iris
+iris
+```
+
+
+
+```{r}
+iris2 <- split(iris,iris$Species)
+iris2
+```
+
+```{r}
+lapply(iris2, function(iris2) colMeans(iris2[c("Sepal.Length")]))
+lapply(iris2, colMeans)
+
+
+mean(iris[iris$Species=='virginica','Sepal.Length'])
+
+
+
+
+```
+
+```{r}
+u <- iris[, c("Sepal.Length", "Species")]
+u
+u2 <- u[u$Species=="virginica",]
+t <- mean(u2$Sepal.Length)
+ass
+```
+
+```{r}
+data(mtcars)
+mtcars
+```
+
+```{r}
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+```
+
+```{r}
+lapply(mtcars,mean)
+```
+```{r}
+tapply(mtcars$mpg, mtcars$cyl, mean)
+```
+
+```{r}
+with(mtcars, tapply(mpg, cyl, mean))
+```
+
+```{r}
+tapply(mtcars$cyl, mtcars$mpg, mean)
+```
+
+```{r}
+mtcars
+```
+
+```{r}
+w <- mean(mtcars[mtcars$cyl==4, "hp"])
+w
+```
+
+```{r}
+u <- mean(mtcars[mtcars$cyl==8, "hp"])
+u
+abs(w-u)
+```
+
+```{r}
+debug(ls)
+ls
+
+
+```
+
