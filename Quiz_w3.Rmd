@@ -46,7 +46,9 @@ mtcars
 
 ```{r}
 sapply(split(mtcars$mpg, mtcars$cyl), mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
 ```
+
 
 ```{r}
 lapply(mtcars,mean)
