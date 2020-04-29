@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/28/2020"
+output: pdf_document
+---
+
+```{r}
+rankhospital <- function(state, outcome, num){
+df <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+out_emp <- c("heart attack", "heart failure", "pneumonia")
+inte <- c(1:1000)
+
+
+  if (state %in% df$State){
+    
+  } else {
+    print("invalid State")
+    stop()
+  }
+  
+  if(outcome %in% out_emp){
+    
+  }else {
+    print("invalid Outcome")
+    stop()
+  }
+  
+
+  if (outcome == "heart failure"){
+    df2 <- data.frame(df[df$State == state, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure")])
+    df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)
+    df3 <- order(df2$Hospital.Name)
+    df4 <- df2[df3,]
+    df5 <- order(df4$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)
+    df6 <- df4[df5,]
+    df7 <- df6[complete.cases(df6$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure), ]
+    df8 <- df7$Hospital.Name
+ 
+        if (num %in% inte){
+        return(df8[num])
+      
+        } else if (num == "best") {
+        return(df8[1])
+      
+        } else if (num == "worst"){
+        last_row <- length(df8)
+        return(df8[last_row])
+    }
+    
+    
+   } else if (outcome == "heart attack"){
+    df2 <- data.frame(df[df$State == state, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack")])
+    df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+    df3 <- order(df2$Hospital.Name)
+    df4 <- df2[df3,]
+    df5 <- order(df4$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+    df6 <- df4[df5,]
+    df7 <- df6[complete.cases(df6$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), ]
+    df8 <- df7$Hospital.Name
+    
+        if (num %in% inte){
+        return(df7[num])
+      
+        } else if (num == "best") {
+        return(df7[1])
+      
+        } else if (num == "worst"){
+        last_row <- length(df8)
+        return(df8[last_row])
+        }
+    
+   } else if (outcome == "pneumonia") {
+    df2 <- data.frame(df[df$State == state, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")])
+    df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
+    df3 <- order(df2$Hospital.Name)
+    df4 <- df2[df3,]
+    df5 <- order(df4$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
+    df6 <- df4[df5,]
+    df7 <- df6[complete.cases(df6$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia), ]
+    df8 <- df7$Hospital.Name
+    
+        if (num %in% inte){
+        return(df7[num])
+      
+        } else if (num == "best") {
+        return(df7[1])
+      
+        } else if (num == "worst"){
+        last_row <- length(df8)
+        return(df8[last_row])
+        }
+   }
+}
+
+rankhospital("TX", "heart failure", "best")    
+    
+```
+
