@@ -60,7 +60,7 @@ inte <- c(1:1000)
     df8 <- df7$Hospital.Name
     
         if (num %in% inte){
-        return(df7[num])
+        return(df7[num, ])
       
         } else if (num == "best") {
         return(df7[1])
@@ -81,7 +81,7 @@ inte <- c(1:1000)
     df8 <- df7$Hospital.Name
     
         if (num %in% inte){
-        return(df7[num])
+        return(df7[num, ])
       
         } else if (num == "best") {
         return(df7[1])
@@ -93,7 +93,7 @@ inte <- c(1:1000)
    }
 }
 
-rankhospital("MD", "heart failure", "best")    
+rankhospital("NV", "heart failure", 10)    
     
 ```
 

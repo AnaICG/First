@@ -93,7 +93,7 @@ rankall <- function(outcome, num = "best"){
 }
 
 
-rankall("heart failure", 7)
+rankall("heart attack", 10)
   
 ```
 
@@ -142,10 +142,40 @@ rankall <- function(outcome, num = "best"){
             last_row <- nrow(df7_NA)
             outc <- data.frame(df7_NA[last_row, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure")])
           }
-    
+      } else if (outcome == "heart attack"){ 
+        df5 <- order(df4_alp$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+        df6_rank <- df4_alp[df5, ]
+        df7_NA <- df6_rank[complete.cases(df6_rank$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), ]
           
+            if (num %in% inte){
+            outc <- data.frame(df7_NA[num, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack")])
+          
+          } else if (num == "best"){
+            outc <- data.frame(df7_NA[1, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack")])
+            
+          } else if (num == "worst"){
+            last_row <- nrow(df7_NA)
+            outc <- data.frame(df7_NA[last_row, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack")])
+          }
+        } else if (outcome == "pneumonia") {
+        df5 <- order(df4_alp$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
+        df6_rank <- df4_alp[df5, ]
+        df7_NA <- df6_rank[complete.cases(df6_rank$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia), ]
+        
+            if (num %in% inte){
+            outc <- data.frame(df7_NA[num, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")])
+          
+          } else if (num == "best"){
+            outc <- data.frame(df7_NA[1, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")])
+            
+          } else if (num == "worst"){
+            last_row <- nrow(df7_NA)
+            outc <- data.frame(df7_NA[last_row, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")])
+          }
         }
   }
+  
+
     
 
   lodf_rank <- lapply(lodf_state, ord_rank)

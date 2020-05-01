@@ -56,6 +56,6 @@ out_emp <- c("heart attack", "heart failure", "pneumonia")
   
 }
   
-best("MD", "pneumonia")
+best("AK", "pneumonia")
 ```
 
