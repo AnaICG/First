@@ -93,7 +93,7 @@ inte <- c(1:1000)
    }
 }
 
-rankhospital("TX", "heart failure", "best")    
+rankhospital("MD", "heart failure", "best")    
     
 ```
 

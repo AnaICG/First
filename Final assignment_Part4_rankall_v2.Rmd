@@ -93,11 +93,67 @@ rankall <- function(outcome, num = "best"){
 }
 
 
-tail(rankall("heart failure"), 10) 
+rankall("heart failure", 7)
   
 ```
 
 ```{r}
+rankall <- function(outcome, num = "best"){
 
+  df <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+  out_emp <- c("heart attack", "heart failure", "pneumonia")
+  inte <- c(1:1000)
+  
+  df <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+  df2 <- df[, c("Hospital.Name", "State", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")]
+
+  df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)
+
+  df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+
+  df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
+
+  
+  if (outcome %in% out_emp){
+    
+  }else {
+    print("invalid Outcome")
+    stop()
+  }
+  
+  lodf_state <- split(df2, df2$State)
+
+  ord_rank <- function(df2){
+    df3 <- order(df2$Hospital.Name)
+    df4_alp <- df2[df3, ]
+     
+       if (outcome == "heart failure"){
+        df5 <- order(df4_alp$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)
+        df6_rank <- df4_alp[df5, ]
+        df7_NA <- df6_rank[complete.cases(df6_rank$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure), ]
+        
+          if (num %in% inte){
+            outc <- data.frame(df7_NA[num, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure")])
+          
+          } else if (num == "best"){
+            outc <- data.frame(df7_NA[1, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure")])
+            
+          } else if (num == "worst"){
+            last_row <- nrow(df7_NA)
+            outc <- data.frame(df7_NA[last_row, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure")])
+          }
+    
+          
+        }
+  }
+    
+
+  lodf_rank <- lapply(lodf_state, ord_rank)
+   final <- do.call("rbind", lodf_rank)
+  return(final)
+}
+ 
+
+rankall("heart failure", 10)
 ```
 

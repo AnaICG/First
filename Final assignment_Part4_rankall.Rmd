@@ -1,0 +1,107 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "4/30/2020"
+output: pdf_document
+---
+
+
+```{r}
+df <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+df2 <- df[, c("Hospital.Name", "State", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure", "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")]
+
+df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)
+
+df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+
+df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia <-      as.numeric(df2$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
+
+lodf_state <- split(df2, df2$State)
+
+emp_df
+```
+
+```{r}
+lodf_state <- split(df2, df2$State)
+emp_df <- data.frame()
+list_dfs <- list()
+all_sta <- list(c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY", "GU"))
+
+for( in lodf_state){
+  ord_dfs2 <- order(df2$Hospital.Name)
+  ord_dfs3 <- df2[ord_dfs2, ]
+
+}
+ord_dfs3
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+all_sta <- data.frame(c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY", "GU"))
+
+all_sta
+```
+
+
+
+```{r}
+ord_rank <- function(df2){
+  df3 <- order(df2$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+  df4 <- df2[df3, ]
+}
+
+lodf_state <- split(df2, df2$State)
+lapply(lodf_state, ord_rank(df2)
+```
+
+```{r}
+ord_rank <- function(df2){
+  df3 <- order(df2$Hospital.Name)
+  df4_alp <- df2[df3, ]
+  
+  df5 <- order(df4_alp$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)
+  df6_rank <- df4_alp[df5, ]
+  df7_NA <- df6_rank[complete.cases(df6_rank$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), ]
+}
+lodf_state <- split(df2, df2$State)
+lodf_rankHA <- lapply(lodf_state, ord_rank)
+
+position <- function(x){
+  outc <- data.frame(x[5:7, c("Hospital.Name", "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack")])
+}
+
+lapply(lodf_rankHA, position)
+```
+
+```{r}
+
+```
+
+
+
+```{r}
+
+for(all_lodf in lodf_state){
+  df3 <- order(df2$Hospital.Name)
+  df4 <- df2[df3,]
+
+  
+}
+
+  df4  
+```
+
+
+
+```{r}
+
+```
+
