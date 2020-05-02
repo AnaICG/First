@@ -9,17 +9,17 @@ output: pdf_document
 
 ```{r}
 makeCacheMatrix <- function(x = matrix()) {
-m<-NULL 
-evn <- environment() 
+m<-NULL  # Assigns NULL to a variable within the current environment 
+evn <- environment() # Save environment
 y<-NULL 
 
-setmatrix<-function(y){ 
-	x<<-y 
-	m<<-NULL 
+setmatrix<-function(y){  # Set matrix value within the environment
+	x<<-y   # Cache the matrix: assigns value y from the parent environment
+	m<<-NULL # Search within parent environments for a pre-existing definition of the variable and set it to NULL
 	}
   
-getmatrix<-function() x  
-setinverse<-function(solve) m<<- solve  
+getmatrix<-function() x  # Get the matrix value cached with the function setmatrix
+setinverse<-function(solve) m<<- solve  # Save in m the cached value of inverse matrix
 getinverse<-function() m 
 getenv<- function() environment()
 
