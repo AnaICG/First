@@ -1,0 +1,104 @@
+---
+title: "Untitled"
+author: "AI Casas"
+date: "5/2/2020"
+output: pdf_document
+---
+
+```{r}
+getwd()
+setwd("/Users/ppm/Desktop/R Course/First/exdata")
+all <- readRDS("summarySCC_PM25.rds")
+all
+subs <- head(all)
+subs
+```
+
+Playing around
+```{r}
+boxplot(all$Emissions, color = "blue")
+```
+Playing around
+```{r}
+hist(all$Emissions, col = "blue", breaks = 100)
+rug(all$Emissions)
+```
+
+```{r}
+iris
+iris[iris$Species == "setosa", ]
+```
+
+Plot an histogram and set a vertical line
+```{r}
+pr <- split(iris, iris$Species)
+hist(iris$Sepal.Length)
+abline(v = 7, col = "magenta")
+```
+
+Plot a barplot
+```{r}
+barplot(iris$Sepal.Length)
+```
+
+Plot different colors based on a variable
+```{r}
+with(iris, plot(iris$Sepal.Length, Petal.Length, col = iris$Species))
+```
+
+Set the color you want in your scatterplot
+```{r}
+with(cars, plot(speed, dist, col = "red"))
+```
+
+Playing around with lattice
+```{r}
+library(lattice)
+state <- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(1, 4))
+```
+
+```{r}
+data(mpg)
+mpg
+```
+
+```{r}
+library(datasets)
+hist(airquality$Ozone)
+```
+Plot a legend, different colors based on variables, plot a title
+```{r}
+with(airquality, plot(Wind, Ozone))
+title(main = "Ozone and Wind in NY")
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+with(subset(airquality, Month != 5), points(Wind, Ozone, col = "red"))
+legend("topright", pch = 1, col = c("blue", "red"), legend = c("May", "Other months"))
+```
+
+How to set a linear model and plot the line associated with it. This line can have different thickness and color.
+How to change the symbols for the plot, i.e. circles, triangules, square, etc..
+```{r}
+
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in NY", pch = 4))
+abline(lm(Ozone ~ Wind, airquality), lwd = 2, col = "red")
+par(mar = c(3,3,3, 3))
+
+```
+
+If you dont want to execute/include the data since the beggining
+```{r}
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in NY", pch = 4, type = "n"))
+```
+
+```{r}
+pdf(file = "myplot_example.pdf")
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in NY", pch = 4))
+abline(lm(Ozone ~ Wind, airquality), lwd = 2, col = "red")
+dev.off()
+```
+
+```{r}
+dev.cur()
+```
+
